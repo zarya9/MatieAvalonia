@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MatieAvalonia.Controls.UserBalancePage"
+             MinWidth="400">
+  <Grid RowDefinitions="Auto,*,Auto" RowSpacing="12">
+    <TextBlock Text="Баланс и карты" FontSize="16" FontWeight="SemiBold" Foreground="Black"/>
+    <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" Padding="16" VerticalAlignment="Stretch" Background="White">
+      <ScrollViewer>
+        <StackPanel Spacing="12">
+          <StackPanel Spacing="4">
+            <TextBlock Text="Баланс" FontSize="12" Foreground="Black"/>
+            <TextBlock Name="TxtBalance" Text="—" FontSize="20" FontWeight="SemiBold" Foreground="Black"/>
+          </StackPanel>
+          <TextBlock Name="TxtCardsHint" Text="Карт нет." FontSize="13" Foreground="Black"/>
+          <ItemsControl Name="CardsList">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border BorderBrush="Black" BorderThickness="0,0,0,1" Padding="0,8">
+                  <TextBlock Text="{Binding}" FontSize="13" Foreground="Black"/>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </ScrollViewer>
+    </Border>
+    <Button Name="BtnTopUp"
+            Grid.Row="2"
+            Classes="wireFrameBtn"
+            Content="Пополнить с карты"
+            HorizontalAlignment="Left"
+            MinWidth="200"
+            Click="BtnTopUp_OnClick"/>
+  </Grid>
+</UserControl>

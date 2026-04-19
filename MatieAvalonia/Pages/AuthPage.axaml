@@ -1,0 +1,55 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="using:MatieAvalonia.Controls"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="560"
+        x:Class="MatieAvalonia.AuthPage"
+        Title="Вход — Лавка «Матье»"
+        Width="900" Height="560"
+        MinWidth="900" MaxWidth="900"
+        MinHeight="560" MaxHeight="560"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        SystemDecorations="None"
+        Background="White">
+  <Border BorderBrush="Black" BorderThickness="1">
+    <Grid RowDefinitions="Auto,*">
+      <controls:MatieWindowHeader/>
+      <Grid Grid.Row="1" Margin="24">
+        <Border Name="LoginRoot"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                MinWidth="380"
+                BorderBrush="Black"
+                BorderThickness="1"
+                Background="White"
+                Padding="24">
+          <StackPanel Spacing="10">
+            <TextBlock Text="Добро пожаловать!" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" Foreground="Black"/>
+            <TextBlock Text="Вход" FontWeight="SemiBold" Foreground="Black"/>
+            <TextBlock Text="Логин" FontSize="12" Foreground="Black"/>
+            <TextBox Name="TxtLogin" Classes="wireFrameField" Watermark="Введите логин" MaxLength="50"/>
+            <TextBlock Text="Пароль" FontSize="12" Foreground="Black"/>
+            <TextBox Name="TxtPassword" Classes="wireFrameField" Watermark="Введите пароль" PasswordChar="*" MaxLength="50"/>
+            <TextBlock Name="TxtAuthError"
+                       IsVisible="False"
+                       TextWrapping="Wrap"
+                       Foreground="#C00000"
+                       FontSize="12"
+                       Margin="0,4,0,0"/>
+            <Button Name="BtnAuth" Classes="wireFrameBtn" Content="Войти" Margin="0,8,0,0" HorizontalAlignment="Stretch" Click="BtnAuth_Click"/>
+            <Separator Margin="0,12,0,8"/>
+            <TextBlock Text="Регистрация" FontWeight="SemiBold" Foreground="Black"/>
+            <TextBlock Text="Заполните данные на следующем экране." TextWrapping="Wrap" FontSize="12" Foreground="#666"/>
+            <Button Name="BtnReg" Classes="wireFrameBtn" Content="Перейти к регистрации" Click="BtnReg_Click"/>
+          </StackPanel>
+        </Border>
+        <controls:RegisterPage Name="RegisterRoot"
+                               IsVisible="False"
+                               VerticalAlignment="Stretch"
+                               HorizontalAlignment="Stretch"/>
+      </Grid>
+    </Grid>
+  </Border>
+</Window>

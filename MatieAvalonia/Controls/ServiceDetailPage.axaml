@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:models="using:MatieAvalonia.Models"
+             x:Class="MatieAvalonia.Controls.ServiceDetailPage"
+             MinWidth="400">
+  <Grid RowDefinitions="Auto,*" RowSpacing="12">
+    <StackPanel Orientation="Horizontal" Spacing="8">
+      <Button Name="BtnBackDetail" Classes="wireFrameBtn" Content="← Назад" MinWidth="88" Click="BtnBackDetail_OnClick"/>
+      <TextBlock Text="Услуга" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="Black"/>
+    </StackPanel>
+    <Grid Grid.Row="1" RowDefinitions="Auto,*" RowSpacing="10">
+      <ComboBox Name="CmbPickService"
+                Classes="wireFrameField"
+                PlaceholderText="Выберите услугу"
+                MinHeight="34"
+                SelectionChanged="CmbPickService_OnSelectionChanged">
+        <ComboBox.ItemTemplate>
+          <DataTemplate DataType="models:BookingServicePickItem">
+            <TextBlock Text="{Binding Name}"/>
+          </DataTemplate>
+        </ComboBox.ItemTemplate>
+      </ComboBox>
+      <Grid Grid.Row="1" ColumnDefinitions="200,*" ColumnSpacing="16">
+        <Border BorderBrush="Black" BorderThickness="1" Height="200" VerticalAlignment="Top" Background="#FFF8F8F8">
+          <Image Name="ImgServicePhoto" Stretch="Uniform"/>
+        </Border>
+        <StackPanel Grid.Column="1" Spacing="8">
+          <TextBlock Name="TxtServiceTitle" Text="—" FontSize="15" FontWeight="SemiBold" Foreground="Black"/>
+          <TextBlock Name="TxtServiceDescription" Text="—" TextWrapping="Wrap" Foreground="#444" FontSize="12"/>
+          <TextBlock Name="TxtServicePrice" Text="Цена: —" FontWeight="SemiBold" Foreground="Black"/>
+          <TextBlock Name="TxtServiceUpdated" Text="Обновлено: —" FontSize="12" Foreground="#666"/>
+          <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,12,0,0">
+            <Button Name="BtnBookFromDetail" Classes="wireFrameBtn" Content="Записаться" MinWidth="120" Click="BtnBookFromDetail_OnClick"/>
+            <Button Name="BtnReviewFromDetail" Classes="wireFrameBtn" Content="Отзыв" MinWidth="100" Click="BtnReviewFromDetail_OnClick"/>
+          </StackPanel>
+        </StackPanel>
+      </Grid>
+    </Grid>
+  </Grid>
+</UserControl>

@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MatieAvalonia.Controls.ModeratorMasterServiceBindingsPage"
+             MinWidth="400">
+  <Grid RowDefinitions="Auto,Auto,*" RowSpacing="10">
+    <TextBlock Text="Модератор — услуги мастеров" FontSize="16" FontWeight="SemiBold" Foreground="Black"/>
+    <TextBlock Grid.Row="1"
+               Text="В схеме БД нет отдельной таблицы привязки: ниже пары «мастер — услуга», по которым уже есть записи клиентов."
+               FontSize="11"
+               Foreground="#666"
+               TextWrapping="Wrap"/>
+    <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1" Padding="0" Background="White">
+      <DataGrid Name="BindingsGrid"
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                GridLinesVisibility="Horizontal"
+                HeadersVisibility="Column"
+                CanUserResizeColumns="True"
+                CanUserSortColumns="False">
+        <DataGrid.Columns>
+          <DataGridTextColumn Header="Мастер" Binding="{Binding Master}" Width="*"/>
+          <DataGridTextColumn Header="Услуга" Binding="{Binding Service}" Width="*"/>
+          <DataGridTextColumn Header="Записей" Binding="{Binding BookingsCount}" Width="88"/>
+        </DataGrid.Columns>
+      </DataGrid>
+    </Border>
+  </Grid>
+</UserControl>

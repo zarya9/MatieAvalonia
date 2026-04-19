@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:models="using:MatieAvalonia.Models"
+             x:Class="MatieAvalonia.Controls.CardTopUpPage"
+             MinWidth="400">
+  <Grid RowDefinitions="Auto,*" RowSpacing="12">
+    <TextBlock Text="Пополнение (привязка карты)" FontSize="16" FontWeight="SemiBold" Foreground="Black"/>
+    <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" Padding="16" Background="White" MaxWidth="440" HorizontalAlignment="Left">
+      <StackPanel Spacing="10">
+        <TextBlock Name="TxtCardError"
+                   IsVisible="False"
+                   TextWrapping="Wrap"
+                   Foreground="#C00000"
+                   FontSize="12"/>
+        <TextBlock Text="Карта" FontSize="12" Foreground="Black"/>
+        <ComboBox Name="CmbCard"
+                  Classes="wireFrameField"
+                  PlaceholderText="Выберите карту"
+                  MinHeight="34"
+                  SelectionChanged="CmbCard_OnSelectionChanged">
+          <ComboBox.ItemTemplate>
+            <DataTemplate DataType="models:CardPickListItem">
+              <TextBlock Text="{Binding Display}"/>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+        <StackPanel Name="PanelNewCardDetails" Spacing="10">
+          <TextBlock Text="Номер карты" FontSize="12" Foreground="Black"/>
+          <TextBox Name="TxtNumber" Classes="wireFrameField" Watermark="0000 0000 0000 0000" MaxLength="23"/>
+          <TextBlock Text="Срок (ММ/ГГ)" FontSize="12" Foreground="Black"/>
+          <TextBox Name="TxtExpiry" Classes="wireFrameField" Watermark="ММ/ГГ" MaxLength="5"/>
+          <TextBlock Text="CVV" FontSize="12" Foreground="Black"/>
+          <TextBox Name="TxtCvv" Classes="wireFrameField" Watermark="***" MaxLength="3" PasswordChar="*"/>
+        </StackPanel>
+        <TextBlock Text="Сумма пополнения баланса" FontSize="12" Foreground="Black"/>
+        <TextBox Name="TxtAmount" Classes="wireFrameField" Watermark="0,00" MaxLength="22"/>
+        <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,12,0,0">
+          <Button Name="BtnSave" Classes="wireFrameBtn" Content="Сохранить карту" MinWidth="160" Click="BtnSave_OnClick"/>
+          <Button Name="BtnCancel" Classes="wireFrameBtn" Content="Отмена" MinWidth="100" Click="BtnCancel_OnClick"/>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+  </Grid>
+</UserControl>

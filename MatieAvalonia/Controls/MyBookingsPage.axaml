@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MatieAvalonia.Controls.MyBookingsPage"
+             MinWidth="400">
+  <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="10">
+    <TextBlock Text="Мои записи" FontSize="16" FontWeight="SemiBold" Foreground="Black"/>
+    <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="8">
+      <Button Name="BtnSortAsc" Classes="wireFrameBtn" Content="А→Я (услуга)" MinWidth="120" Click="BtnSortAsc_OnClick"/>
+      <Button Name="BtnSortDesc" Classes="wireFrameBtn" Content="Я→А (услуга)" MinWidth="120" Click="BtnSortDesc_OnClick"/>
+      <Button Name="BtnRepeatBooking" Classes="wireFrameBtn" Content="Повторить запись" MinWidth="140" Click="BtnRepeatBooking_OnClick"/>
+    </StackPanel>
+    <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1" Background="White" Padding="0">
+      <DataGrid Name="BookingsGrid"
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                GridLinesVisibility="Horizontal"
+                HeadersVisibility="Column"
+                CanUserResizeColumns="True"
+                CanUserSortColumns="False"
+                DoubleTapped="BookingsGrid_OnDoubleTapped">
+        <DataGrid.Columns>
+          <DataGridTextColumn Header="ID" Binding="{Binding IdBooking}" Width="56"/>
+          <DataGridTextColumn Header="Услуга" Binding="{Binding Service}" Width="180"/>
+          <DataGridTextColumn Header="Мастер" Binding="{Binding Master}" Width="160"/>
+          <DataGridTextColumn Header="Дата и время" Binding="{Binding DateTime}" Width="140"/>
+          <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="120"/>
+          <DataGridTextColumn Header="Очередь" Binding="{Binding Queue}" Width="80"/>
+          <DataGridTextColumn Header="Обновлено" Binding="{Binding UpdatedAt}" Width="140"/>
+        </DataGrid.Columns>
+      </DataGrid>
+    </Border>
+    <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+      <Button Name="BtnPrevPage" Classes="wireFrameBtn" Content="◀" MinWidth="44" Height="32" Click="BtnPrevPage_OnClick"/>
+      <TextBlock Name="TxtPageInfo" Text="—" VerticalAlignment="Center" Foreground="Black" FontSize="12"/>
+      <Button Name="BtnNextPage" Classes="wireFrameBtn" Content="▶" MinWidth="44" Height="32" Click="BtnNextPage_OnClick"/>
+    </StackPanel>
+  </Grid>
+</UserControl>

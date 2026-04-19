@@ -1,0 +1,45 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MatieAvalonia.Controls.ModeratorServicesPage"
+             MinWidth="400">
+  <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="10">
+    <TextBlock Text="Список услуг" FontSize="16" FontWeight="SemiBold" Foreground="Black"/>
+    <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="8">
+      <Button Name="BtnAddService" Classes="wireFrameBtn" Content="Добавить услугу" MinWidth="140" Click="BtnAddService_OnClick"/>
+      <Button Name="BtnDeleteService" Classes="wireFrameBtn" Content="Удалить" MinWidth="88" Click="BtnDeleteService_OnClick"/>
+      <Button Name="BtnSortAsc" Classes="wireFrameBtn" Content="А→Я" MinWidth="56" Click="BtnSortAsc_OnClick"/>
+      <Button Name="BtnSortDesc" Classes="wireFrameBtn" Content="Я→А" MinWidth="56" Click="BtnSortDesc_OnClick"/>
+    </StackPanel>
+    <TextBlock Name="TxtModeratorMsg"
+               Grid.Row="2"
+               IsVisible="False"
+               TextWrapping="Wrap"
+               Foreground="#C00000"
+               FontSize="12"/>
+    <Border Grid.Row="3" BorderBrush="Black" BorderThickness="1" Padding="0" Background="White" MinHeight="120">
+      <DataGrid Name="ServicesGrid"
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                GridLinesVisibility="Horizontal"
+                HeadersVisibility="Column"
+                CanUserResizeColumns="True"
+                CanUserSortColumns="False"
+                DoubleTapped="ServicesGrid_OnDoubleTapped">
+        <DataGrid.Columns>
+          <DataGridTextColumn Header="ID" Binding="{Binding IdService}" Width="56"/>
+          <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="160"/>
+          <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="220"/>
+          <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="80"/>
+          <DataGridTextColumn Header="Коллекция" Binding="{Binding Collection}" Width="140"/>
+          <DataGridTextColumn Header="Фото (путь)" Binding="{Binding ImgPath}" Width="140"/>
+          <DataGridTextColumn Header="Обновлено" Binding="{Binding UpdatedAt}" Width="140"/>
+        </DataGrid.Columns>
+      </DataGrid>
+    </Border>
+    <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+      <Button Name="BtnPrevPage" Classes="wireFrameBtn" Content="◀" MinWidth="40" Height="30" Click="BtnPrevPage_OnClick"/>
+      <TextBlock Name="TxtPageInfo" Text="—" VerticalAlignment="Center" Foreground="Black" FontSize="12"/>
+      <Button Name="BtnNextPage" Classes="wireFrameBtn" Content="▶" MinWidth="40" Height="30" Click="BtnNextPage_OnClick"/>
+    </StackPanel>
+  </Grid>
+</UserControl>

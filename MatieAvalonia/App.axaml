@@ -1,0 +1,37 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MatieAvalonia.App"
+             RequestedThemeVariant="Default">
+
+  <!-- Общие значения вёрстки (макет: чёрная обводка, «карточки») -->
+  <Application.Resources>
+    <ResourceDictionary>
+      <SolidColorBrush x:Key="WireBlackBrush" Color="Black" />
+      <SolidColorBrush x:Key="WireGrayBrush" Color="#FFCCCCCC" />
+      <SolidColorBrush x:Key="WireMutedFillBrush" Color="#FFE8E8E8" />
+      <SolidColorBrush x:Key="WireWhiteBrush" Color="White" />
+    </ResourceDictionary>
+  </Application.Resources>
+
+  <Application.Styles>
+    <FluentTheme />
+    <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
+    <Style Selector="Button.wireFrameBtn">
+      <Setter Property="Background" Value="{DynamicResource WireWhiteBrush}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource WireBlackBrush}" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="Foreground" Value="Black" />
+      <Setter Property="CornerRadius" Value="0" />
+      <Setter Property="Padding" Value="10,8" />
+    </Style>
+    <Style Selector="Button.wireFrameBtn:pointerover">
+      <Setter Property="Background" Value="{DynamicResource WireMutedFillBrush}" />
+    </Style>
+    <Style Selector="TextBox.wireFrameField">
+      <Setter Property="BorderBrush" Value="{DynamicResource WireBlackBrush}" />
+    </Style>
+    <Style Selector="ComboBox.wireFrameField">
+      <Setter Property="BorderBrush" Value="{DynamicResource WireBlackBrush}" />
+    </Style>
+  </Application.Styles>
+</Application>

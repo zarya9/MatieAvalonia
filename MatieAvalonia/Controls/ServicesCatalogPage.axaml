@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:MatieAvalonia.Controls"
+             xmlns:models="using:MatieAvalonia.Models"
+             x:Class="MatieAvalonia.Controls.ServicesCatalogPage"
+             MinWidth="400">
+  <Grid RowDefinitions="Auto,*" RowSpacing="10">
+    <StackPanel Orientation="Horizontal" Spacing="8">
+      <Button Name="BtnSortAsc" Classes="wireFrameBtn" Content="А→Я" MinWidth="72" Click="BtnSortAsc_OnClick"/>
+      <Button Name="BtnSortDesc" Classes="wireFrameBtn" Content="Я→А" MinWidth="72" Click="BtnSortDesc_OnClick"/>
+      <TextBlock Text="Услуги" VerticalAlignment="Center" Margin="12,0,0,0" FontSize="16" FontWeight="SemiBold" Foreground="Black"/>
+    </StackPanel>
+
+    <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" Background="White" Padding="8">
+      <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Auto">
+        <ItemsControl Name="CatalogItems">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <StackPanel Spacing="10"/>
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate DataType="models:ServiceGridRow">
+              <controls:CatalogServiceCard/>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </ScrollViewer>
+    </Border>
+  </Grid>
+</UserControl>

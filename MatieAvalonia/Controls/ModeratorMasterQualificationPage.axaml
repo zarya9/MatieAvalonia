@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:models="using:MatieAvalonia.Models"
+             x:Class="MatieAvalonia.Controls.ModeratorMasterQualificationPage"
+             MinWidth="400">
+  <Grid RowDefinitions="Auto,*" RowSpacing="12">
+    <TextBlock Text="Модератор — квалификация мастеров" FontSize="16" FontWeight="SemiBold" Foreground="Black"/>
+    <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" Padding="16" Background="White">
+      <StackPanel Spacing="10" MaxWidth="480" HorizontalAlignment="Left">
+        <TextBlock Name="TxtModQualError"
+                   IsVisible="False"
+                   TextWrapping="Wrap"
+                   Foreground="#C00000"
+                   FontSize="12"/>
+        <TextBlock Text="Мастер" FontSize="12" Foreground="Black"/>
+        <ComboBox Name="CmbModMaster"
+                  Classes="wireFrameField"
+                  PlaceholderText="Мастер"
+                  MinHeight="34">
+          <ComboBox.ItemTemplate>
+            <DataTemplate DataType="models:MasterListItem">
+              <TextBlock Text="{Binding Display}"/>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Text="Новая квалификация" FontSize="12" Foreground="Black"/>
+        <ComboBox Name="CmbModQual"
+                  Classes="wireFrameField"
+                  PlaceholderText="Новая квалификация"
+                  MinHeight="34">
+          <ComboBox.ItemTemplate>
+            <DataTemplate DataType="models:QualificationListItem">
+              <TextBlock Text="{Binding Name}"/>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Name="BtnApplyQual" Classes="wireFrameBtn" Content="Поднять квалификацию" HorizontalAlignment="Left" MinWidth="200" Click="BtnApplyQual_OnClick"/>
+      </StackPanel>
+    </Border>
+  </Grid>
+</UserControl>

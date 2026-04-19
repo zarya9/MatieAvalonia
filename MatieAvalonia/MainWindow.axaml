@@ -1,0 +1,170 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="using:MatieAvalonia.Controls"
+        xmlns:models="using:MatieAvalonia.Models"
+        mc:Ignorable="d" d:DesignWidth="960" d:DesignHeight="640"
+        x:Class="MatieAvalonia.MainWindow"
+        Title="Лавка «Матье»"
+        Width="960" Height="640"
+        MinWidth="960" MaxWidth="960"
+        MinHeight="640" MaxHeight="640"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        SystemDecorations="None"
+        Background="White">
+  <Border BorderBrush="Black" BorderThickness="1">
+    <Grid RowDefinitions="Auto,*">
+      <controls:MatieWindowHeader x:Name="ShellHeader"/>
+      <!-- Макет: сайдбар | центр (вкладки + контент + пагинация) | правая панель -->
+      <Grid Grid.Row="1" ColumnDefinitions="204,*,132">
+        <Border Grid.Column="0"
+                BorderBrush="Black"
+                BorderThickness="0,0,1,0"
+                Background="White"
+                Padding="10,0">
+          <Grid RowDefinitions="Auto,*,Auto,Auto">
+            <Border Grid.Row="0" Padding="0,10,0,8" HorizontalAlignment="Center">
+              <Image Width="72" Height="72"
+                     Source="avares://MatieAvalonia/Assets/Logo.png"/>
+            </Border>
+            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled">
+              <StackPanel Spacing="6">
+                <Button Name="BtnCollections" Classes="wireFrameBtn" Content="Коллекции" HorizontalAlignment="Stretch" Click="BtnCollections_Click"/>
+                <TextBlock Name="LblClientSections" Text="Клиенту" FontSize="11" Foreground="#666" Margin="0,6,0,2"/>
+                <StackPanel Name="PanelClientMenu" Spacing="6">
+                  <Button Name="BtnBalance" Classes="wireFrameBtn" Content="Баланс" HorizontalAlignment="Stretch" Click="BtnBalance_Click"/>
+                  <Button Name="BtnTopUp" Classes="wireFrameBtn" Content="Пополнить" HorizontalAlignment="Stretch" Click="BtnTopUp_Click"/>
+                  <Button Name="BtnBook" Classes="wireFrameBtn" Content="Запись" HorizontalAlignment="Stretch" Click="BtnBook_Click"/>
+                  <Button Name="BtnMyBookings" Classes="wireFrameBtn" Content="Мои записи" HorizontalAlignment="Stretch" Click="BtnMyBookings_Click"/>
+                  <Button Name="BtnReview" Classes="wireFrameBtn" Content="Отзыв" HorizontalAlignment="Stretch" Click="BtnReview_Click"/>
+                </StackPanel>
+                <Separator Name="SepBeforeRoleMenus" Margin="0,8"/>
+                <TextBlock Name="LblRoleMenus" Text="По роли" FontSize="11" Foreground="#666"/>
+                <StackPanel Name="PanelModeratorMenu" Spacing="6">
+                  <Button Name="BtnModeratorServices" Classes="wireFrameBtn" Content="Список услуг" HorizontalAlignment="Stretch" Click="BtnModeratorServices_Click"/>
+                  <Button Name="BtnModeratorServiceForm" Classes="wireFrameBtn" Content="Форма услуги" HorizontalAlignment="Stretch" Click="BtnModeratorServiceForm_Click"/>
+                  <Button Name="BtnModeratorBindings" Classes="wireFrameBtn" Content="Привязки" HorizontalAlignment="Stretch" Click="BtnModeratorBindings_Click"/>
+                  <Button Name="BtnModeratorQual" Classes="wireFrameBtn" Content="Квалификации" HorizontalAlignment="Stretch" Click="BtnModeratorQual_Click"/>
+                </StackPanel>
+                <StackPanel Name="PanelAdminMenu" Spacing="6" Margin="0,6,0,0">
+                  <Button Name="BtnAdminUsers" Classes="wireFrameBtn" Content="Пользователи" HorizontalAlignment="Stretch" Click="BtnAdminUsers_Click"/>
+                  <Button Name="BtnAdminUserEdit" Classes="wireFrameBtn" Content="Правка пользователя" HorizontalAlignment="Stretch" Click="BtnAdminUserEdit_Click"/>
+                  <Button Name="BtnAdminStaff" Classes="wireFrameBtn" Content="Сотрудники" HorizontalAlignment="Stretch" Click="BtnAdminStaff_Click"/>
+                </StackPanel>
+                <StackPanel Name="PanelMasterMenu" Spacing="6" Margin="0,6,0,0">
+                  <Button Name="BtnMasterClients" Classes="wireFrameBtn" Content="Клиенты" HorizontalAlignment="Stretch" Click="BtnMasterClients_Click"/>
+                  <Button Name="BtnMasterQualRequest" Classes="wireFrameBtn" Content="Заявка на квал." HorizontalAlignment="Stretch" Click="BtnMasterQualRequest_Click"/>
+                </StackPanel>
+                <Separator Margin="0,8"/>
+                <Button Name="BtnServiceDetail" Classes="wireFrameBtn" Content="Карточка услуги" HorizontalAlignment="Stretch" Click="BtnServiceDetail_Click"/>
+              </StackPanel>
+            </ScrollViewer>
+            <Button Name="BtnCatalog"
+                    Grid.Row="2"
+                    Classes="wireFrameBtn"
+                    Content="Услуги"
+                    Height="36"
+                    Margin="0,8,0,6"
+                    HorizontalAlignment="Stretch"
+                    Click="BtnCatalog_Click"/>
+            <Button Name="BtnLogout"
+                    Grid.Row="3"
+                    Classes="wireFrameBtn"
+                    Content="Выход"
+                    Height="36"
+                    Margin="0,0,0,10"
+                    HorizontalAlignment="Stretch"
+                    Click="BtnLogout_Click"/>
+          </Grid>
+        </Border>
+
+        <Grid Grid.Column="1" RowDefinitions="Auto,*,Auto">
+          <Border Grid.Row="0" BorderBrush="Black" BorderThickness="0,0,0,1" Background="White">
+            <StackPanel Orientation="Horizontal" Spacing="0" Margin="12,8,0,0">
+              <Border Name="BorderTabCustom"
+                      BorderBrush="Black"
+                      BorderThickness="1,1,1,0"
+                      Padding="22,10"
+                      Background="#FFE8E8E8"
+                      Cursor="Hand"
+                      PointerPressed="BorderTabCustom_OnPointerPressed">
+                <TextBlock Text="Кастом" Foreground="Black" FontSize="13"/>
+              </Border>
+              <Border Name="BorderTabCosplay"
+                      BorderBrush="Black"
+                      BorderThickness="1,1,1,0"
+                      Padding="22,10"
+                      Margin="-1,0,0,0"
+                      Background="White"
+                      Cursor="Hand"
+                      PointerPressed="BorderTabCosplay_OnPointerPressed">
+                <TextBlock Text="Косплей" Foreground="Black" FontSize="13"/>
+              </Border>
+            </StackPanel>
+          </Border>
+          <Border Grid.Row="1" Background="White" BorderBrush="Black" BorderThickness="0">
+            <ContentControl Name="PageHost"
+                            Margin="12"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"/>
+          </Border>
+          <Border Grid.Row="2" BorderBrush="Black" BorderThickness="0,1,0,0" Background="White" Padding="12,8">
+            <TextBlock Name="TxtMainFooter"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Text="—"
+                       FontSize="12"
+                       Foreground="Black"/>
+          </Border>
+        </Grid>
+
+        <Border Name="PanelCatalogChrome"
+                Grid.Column="2"
+                BorderBrush="Black"
+                BorderThickness="1,0,0,0"
+                Background="#FFFAFAFA"
+                Padding="10,12">
+          <StackPanel Spacing="10">
+            <TextBlock Text="Поиск" FontSize="11" Foreground="Black"/>
+            <TextBox Name="TxtCatalogSearch"
+                     Classes="wireFrameField"
+                     Watermark="Поиск"
+                     MinHeight="30"
+                     MaxLength="100"
+                     TextChanged="TxtCatalogSearch_OnTextChanged"/>
+            <TextBlock Text="Коллекция" FontSize="11" Foreground="Black"/>
+            <ComboBox Name="CmbCatalogCollection"
+                      Classes="wireFrameField"
+                      PlaceholderText="Коллекция"
+                      MinHeight="30"
+                      SelectionChanged="CmbCatalogCollection_OnSelectionChanged">
+              <ComboBox.ItemTemplate>
+                <DataTemplate DataType="models:CollectionListItem">
+                  <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+            </ComboBox>
+            <StackPanel Spacing="8" Margin="0,12,0,0">
+              <Button Name="BtnCatalogChromePrev"
+                      Classes="wireFrameBtn"
+                      Content="◀"
+                      Height="52"
+                      FontSize="20"
+                      HorizontalAlignment="Stretch"
+                      Click="BtnCatalogChromePrev_OnClick"/>
+              <Button Name="BtnCatalogChromeNext"
+                      Classes="wireFrameBtn"
+                      Content="▶"
+                      Height="52"
+                      FontSize="20"
+                      HorizontalAlignment="Stretch"
+                      Click="BtnCatalogChromeNext_OnClick"/>
+            </StackPanel>
+          </StackPanel>
+        </Border>
+      </Grid>
+    </Grid>
+  </Border>
+</Window>

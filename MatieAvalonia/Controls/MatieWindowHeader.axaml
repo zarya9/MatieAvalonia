@@ -1,0 +1,82 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MatieAvalonia.Controls.MatieWindowHeader"
+             Height="36">
+  <Border BorderBrush="Black" BorderThickness="0,0,0,1" Background="White">
+    <Grid ColumnDefinitions="*,Auto">
+      <Border Grid.Column="0"
+              Background="Transparent"
+              PointerPressed="DragZone_OnPointerPressed">
+        <StackPanel Orientation="Horizontal" Spacing="10" Margin="10,0,8,0" VerticalAlignment="Center">
+          <TextBlock Text="Матье"
+                     VerticalAlignment="Center"
+                     FontSize="14"
+                     Foreground="Black"
+                     IsHitTestVisible="False"/>
+          <TextBlock Name="TxtSessionInfo"
+                     VerticalAlignment="Center"
+                     FontSize="11"
+                     Foreground="#555555"
+                     TextWrapping="NoWrap"
+                     TextTrimming="CharacterEllipsis"
+                     MaxWidth="320"
+                     IsVisible="False"/>
+        </StackPanel>
+      </Border>
+      <StackPanel Grid.Column="1"
+                  Orientation="Horizontal"
+                  Spacing="4"
+                  Margin="0,0,8,0"
+                  VerticalAlignment="Center">
+        <Button Name="BtnMinimize"
+                Click="BtnMinimize_OnClick"
+                BorderBrush="Black"
+                BorderThickness="1"
+                Background="Transparent"
+                Padding="0"
+                MinWidth="88"
+                Height="26"
+                CornerRadius="0">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Background="White"/>
+            <Border Grid.Row="1" Background="#FFE8E8E8"/>
+            <TextBlock Grid.RowSpan="2"
+                       Text="Свернуть"
+                       FontSize="10"
+                       Foreground="Black"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+          </Grid>
+        </Button>
+        <Button Name="BtnClose"
+                Click="BtnClose_OnClick"
+                BorderBrush="Black"
+                BorderThickness="1"
+                Background="Transparent"
+                Padding="0"
+                MinWidth="80"
+                Height="26"
+                CornerRadius="0">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Background="White"/>
+            <Border Grid.Row="1" Background="#FFE8E8E8"/>
+            <TextBlock Grid.RowSpan="2"
+                       Text="Закрыть"
+                       FontSize="10"
+                       Foreground="Black"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+          </Grid>
+        </Button>
+      </StackPanel>
+    </Grid>
+  </Border>
+</UserControl>

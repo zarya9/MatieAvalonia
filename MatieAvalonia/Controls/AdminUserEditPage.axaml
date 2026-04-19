@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:models="using:MatieAvalonia.Models"
+             x:Class="MatieAvalonia.Controls.AdminUserEditPage"
+             MinWidth="400">
+  <Grid RowDefinitions="Auto,*" RowSpacing="12">
+    <TextBlock Text="Редактирование пользователя" FontSize="16" FontWeight="SemiBold" Foreground="Black"/>
+    <ScrollViewer Grid.Row="1">
+      <Border BorderBrush="Black" BorderThickness="1" Padding="16" Background="White" MaxWidth="480" HorizontalAlignment="Left">
+        <StackPanel Spacing="8">
+          <TextBlock Name="TxtAdminUserError"
+                     IsVisible="False"
+                     TextWrapping="Wrap"
+                     Foreground="#C00000"
+                     FontSize="12"/>
+          <TextBlock Text="Пользователь" FontSize="12" Foreground="Black"/>
+          <ComboBox Name="CmbPickUser"
+                    Classes="wireFrameField"
+                    PlaceholderText="Выберите пользователя"
+                    MinHeight="34"
+                    SelectionChanged="CmbPickUser_OnSelectionChanged">
+            <ComboBox.ItemTemplate>
+              <DataTemplate DataType="models:UserPickItem">
+                <TextBlock Text="{Binding Display}"/>
+              </DataTemplate>
+            </ComboBox.ItemTemplate>
+          </ComboBox>
+          <TextBlock Text="Фамилия" FontSize="12" Foreground="Black"/>
+          <TextBox Name="TxtEditFname" Classes="wireFrameField" MaxLength="50"/>
+          <TextBlock Text="Имя" FontSize="12" Foreground="Black"/>
+          <TextBox Name="TxtEditName" Classes="wireFrameField" MaxLength="50"/>
+          <TextBlock Text="Отчество" FontSize="12" Foreground="Black"/>
+          <TextBox Name="TxtEditPatronymic" Classes="wireFrameField" MaxLength="50"/>
+          <TextBlock Text="Логин" FontSize="12" Foreground="Black"/>
+          <TextBox Name="TxtEditLogin" Classes="wireFrameField" MaxLength="50"/>
+          <TextBlock Text="Роль" FontSize="12" Foreground="Black"/>
+          <ComboBox Name="CmbEditRole"
+                    Classes="wireFrameField"
+                    PlaceholderText="Роль"
+                    MinHeight="34">
+            <ComboBox.ItemTemplate>
+              <DataTemplate DataType="models:RoleListItem">
+                <TextBlock Text="{Binding Name}"/>
+              </DataTemplate>
+            </ComboBox.ItemTemplate>
+          </ComboBox>
+          <TextBlock Text="Новый пароль (для сброса)" FontSize="12" Foreground="#666"/>
+          <TextBox Name="TxtResetPassword" Classes="wireFrameField" Watermark="Оставьте пустым, если не меняете" PasswordChar="*" MaxLength="50"/>
+          <TextBlock Name="TxtUserUpdatedAt" Text="Обновлено: —" FontSize="12" Foreground="#666"/>
+          <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,12,0,0">
+            <Button Name="BtnSaveUser" Classes="wireFrameBtn" Content="Сохранить" MinWidth="100" Click="BtnSaveUser_OnClick"/>
+            <Button Name="BtnResetPwd" Classes="wireFrameBtn" Content="Сброс пароля" MinWidth="120" Click="BtnResetPwd_OnClick"/>
+            <Button Name="BtnCancelAdminUser" Classes="wireFrameBtn" Content="Отмена" MinWidth="90" Click="BtnCancelAdminUser_OnClick"/>
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </ScrollViewer>
+  </Grid>
+</UserControl>

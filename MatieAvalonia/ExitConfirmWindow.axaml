@@ -1,0 +1,26 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="MatieAvalonia.ExitConfirmWindow"
+        Title="Выход"
+        Width="400"
+        MinHeight="160"
+        SizeToContent="Height"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Background="White">
+  <Border BorderBrush="Black" BorderThickness="1" Padding="20">
+    <StackPanel Spacing="16">
+      <TextBlock Name="TxtMessage"
+                 Text="Закрыть приложение?"
+                 TextWrapping="Wrap"
+                 Foreground="Black"
+                 FontSize="14"/>
+      <StackPanel Orientation="Horizontal"
+                  Spacing="8"
+                  HorizontalAlignment="Right">
+        <Button Name="BtnYes" Classes="wireFrameBtn" Content="Да" MinWidth="88" Click="BtnYes_OnClick"/>
+        <Button Name="BtnNo" Classes="wireFrameBtn" Content="Нет" MinWidth="88" Click="BtnNo_OnClick"/>
+      </StackPanel>
+    </StackPanel>
+  </Border>
+</Window>

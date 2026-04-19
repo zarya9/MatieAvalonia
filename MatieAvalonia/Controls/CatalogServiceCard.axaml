@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MatieAvalonia.Controls.CatalogServiceCard"
+             MinHeight="132">
+  <Border BorderBrush="Black"
+          BorderThickness="1"
+          Background="White"
+          Padding="10"
+          DoubleTapped="Border_OnDoubleTapped">
+    <Grid ColumnDefinitions="120,*">
+      <Grid Grid.Column="0" Width="120" Height="120">
+        <Image Name="ImgPhoto" Stretch="Uniform" IsVisible="False"/>
+        <TextBlock Name="TxtPhotoPlaceholder"
+                   Text="Фото"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Foreground="#888888"
+                   FontSize="13"/>
+      </Grid>
+      <StackPanel Grid.Column="1" Margin="14,0,0,0" Spacing="4">
+        <TextBlock Name="TxtName" FontSize="15" FontWeight="SemiBold" Foreground="Black" TextWrapping="Wrap"/>
+        <TextBlock Name="TxtDesc" FontSize="12" Foreground="#444444" TextWrapping="Wrap" MaxHeight="72"/>
+        <TextBlock Name="TxtMeta" FontSize="12" Foreground="Black" TextWrapping="Wrap"/>
+        <TextBlock Name="TxtUpdated" FontSize="11" Foreground="#666666"/>
+      </StackPanel>
+    </Grid>
+  </Border>
+</UserControl>

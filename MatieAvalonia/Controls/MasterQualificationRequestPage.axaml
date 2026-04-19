@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:models="using:MatieAvalonia.Models"
+             x:Class="MatieAvalonia.Controls.MasterQualificationRequestPage"
+             MinWidth="400">
+  <Grid RowDefinitions="Auto,*" RowSpacing="12">
+    <TextBlock Text="Мастер — заявка на повышение квалификации" FontSize="16" FontWeight="SemiBold" Foreground="Black"/>
+    <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" Padding="16" Background="White" MaxWidth="480" HorizontalAlignment="Left">
+      <StackPanel Spacing="10">
+        <TextBlock Name="TxtRequestError"
+                   IsVisible="False"
+                   TextWrapping="Wrap"
+                   Foreground="#C00000"
+                   FontSize="12"/>
+        <TextBlock Name="TxtCurrentQual" Text="Текущая квалификация: —" Foreground="#444" FontSize="12"/>
+        <TextBlock Text="Целевая квалификация" FontSize="12" Foreground="Black"/>
+        <ComboBox Name="CmbTargetQual"
+                  Classes="wireFrameField"
+                  PlaceholderText="Выберите уровень"
+                  MinHeight="34">
+          <ComboBox.ItemTemplate>
+            <DataTemplate DataType="models:QualificationListItem">
+              <TextBlock Text="{Binding Name}"/>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Name="TxtLastRequest" Text="Последняя заявка: —" FontSize="12" Foreground="#666"/>
+        <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
+          <Button Name="BtnSubmitRequest" Classes="wireFrameBtn" Content="Отправить заявку" MinWidth="160" Click="BtnSubmitRequest_OnClick"/>
+          <Button Name="BtnCancelRequest" Classes="wireFrameBtn" Content="Отмена" MinWidth="90" Click="BtnCancelRequest_OnClick"/>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+  </Grid>
+</UserControl>
