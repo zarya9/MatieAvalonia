@@ -1,5 +1,0 @@
--- ОПЦИОНАЛЬНО: снимок роли клиента в Booking / Reviews (сейчас приложение эти поля не маппит,
--- чтобы не требовать колонки без миграции). После добавления колонок и свойств в EF можно включить снова.
---
--- ALTER TABLE "Booking" ADD COLUMN IF NOT EXISTS "Client_Role_id" INTEGER NULL;
--- ALTER TABLE "Reviews" ADD COLUMN IF NOT EXISTS "Client_Role_id" INTEGER NULL;
